@@ -3,58 +3,83 @@
     {
       "name": "home",
       "options": {
-        "zoomOnStart": true
+        "hideWhenEmbedded": true
       }
     },
     {
       "name": "mapmenu",
       "options": {
-        "isActive": false
+        "isActive": false,
+        "hideWhenEmbedded": false
       }
     },
     {
-      "name": "sharemap"
-    },
-    {
-      "name": "geoposition"
+      "name": "geoposition",
+      "options": {
+        "hideWhenEmbedded": true
+      }
     },
     {
       "name": "print"
+    },
+    {
+      "name": "scalepicker",
+      "options": {
+        "buttonPrefix": "Skala: ",
+        "listItemPrefix": "Skala: ",
+        "hideWhenEmbedded": true
+      }
+    },
+    {
+      "name": "progressbar"
+    },
+    {
+      "name": "draw"
     },
     {
       "name": "about",
       "options": {
         "buttonText": "Om Origo",
         "title": "Om Origo",
-        "content": "<p>Origo är ett ramverk för webbkartor. Ramverket bygger på JavaScript-biblioteket OpenLayers. Du kan använda Origo för att skapa egna webbaserade kartapplikationer.</p><br><p>Projektet drivs och underhålls av ett antal svenska kommuner. Besök gärna <a href='https://github.com/origo-map/origo' target='_blank'>Origo på GitHub</a> för mer information.</p>"
+        "content": "<p>Origo är ett ramverk för webbkartor. Ramverket bygger på JavaScript-biblioteket OpenLayers 3. Du kan använda Origo för att skapa egna webbaserade kartapplikationer.</p><br><p>Projektet drivs och underhålls av ett antal svenska kommuner. Besök gärna <a href='https://github.com/origo-map/origo' target='_blank'>Origo på GitHub</a> för mer information.</p>",
+        "hideWhenEmbedded": true
       }
     },
     {
       "name": "link",
       "options": {
         "title": "Origo",
-        "url": "https://github.com/origo-map/origo"
+        "url": "https://github.com/origo-map/origo",
+        "hideWhenEmbedded": true
       }
     },
     {
       "name": "legend",
       "options": {
-        "labelOpacitySlider": "Opacity",
-        "useGroupIndication" : true
+        "expanded": false,
+        "turnOffLayersControl" : true,
+        "labelOpacitySlider" : "Opacitet",
+        "contentStyle": {
+          "width": "290px"
+        }
       }
     },
     {
       "name": "position",
       "options": {
-        "title": "Web Mercator",
+        "title": "Sweref99 1630",
         "projections": {
-          "EPSG:4326": "WGS84",
-          "EPSG:3006": "Sweref99 TM"
-        }
+          "EPSG:3006": "Sweref99 TM",
+          "EPSG:4326": "WGS84"
+        },
+        "hideWhenEmbedded": true
       }
     },
     {
-      "name": "measure"
+      "name": "measure",
+      "options": {
+        "hideWhenEmbedded": true
+      }
     }
   ],
   "pageSettings": {
@@ -67,195 +92,1484 @@
       "visible": true
     }
   },
-  "projectionCode": "EPSG:3857",
+  "projectionCode": "EPSG:3010",
+  "enableRotation": false,
+  "constrainResolution": true,
+  "tileGridOptions": {
+      "alignTopLeft": false,
+      "tileSize": 512
+  },
   "projectionExtent": [
-    -20026376.39,
-    -20048966.10,
-    20026376.39,
-    20048966.10
+      -2138120,
+      3880750,
+      2396422,
+      8973750
   ],
   "proj4Defs": [
-    {
-      "code": "EPSG:3006",
-      "projection": "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
-    }
-  ],
-  "extent": [
-    -20026376.39,
-    -20048966.10,
-    20026376.39,
-    20048966.10
-  ],
-  "center": [
-    1770000,
-    8770000
-  ],
-  "zoom": 7,
-  "resolutions": [
-    156543.03,
-    78271.52,
-    39135.76,
-    19567.88,
-    9783.94,
-    4891.97,
-    2445.98,
-    1222.99,
-    611.50,
-    305.75,
-    152.87,
-    76.437,
-    38.219,
-    19.109,
-    9.5546,
-    4.7773,
-    2.3887,
-    1.1943,
-    0.5972
+      {
+          "code": "EPSG:3010",
+          "alias": "urn:ogc:def:crs:EPSG::3010",
+          "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+      },
+  	{
+  		"code": "EPSG:3006",
+  		"projection": "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+  	}
   ],
   "featureinfoOptions": {
-    "infowindow": "overlay"
-  },
-  "source": {
-    "local": {
-      "url": "http://localhost/geoserver/wms"
-    }
-  },
-  "groups": [
-    {
-      "name": "background",
-      "title": "Bakgrundskartor",
-      "expanded": true
-    }
-  ],
-  "layers": [
-    {
-      "name": "origo-cities",
-      "title": "Origokommuner",
-      "group": "root",
-      "source": "data/origo-cities-3857.geojson",
-      "style": "origo-logo",
-      "type": "GEOJSON",
-      "attributes": [
-        {
-          "name": "name"
-        }
-      ],
-      "visible": true
-    },
-    {
-      "name": "origo-mask",
-      "opacity": 0.25,
-      "title": "origo-mask",
-      "group": "none",
-      "queryable": false,
-      "source": "data/origo-mask-3857.geojson",
-      "style": "mask",
-      "type": "GEOJSON",
-      "visible": true
-    },
-    {
-      "name": "osm",
-      "title": "OpenStreetMap",
-      "group": "background",
-      "queryable": false,
-      "style": "karta_osm",
-      "type": "OSM",
-      "visible": true
-    }
-  ],
-  "styles": {
-    "mask": [
-      [
-        {
+    "infowindow": "overlay",
+    "selectionStyles": {
+      "Point": [{
+        "circle": {
+          "radius": 8,
           "stroke": {
-            "color": "rgba(0,0,0,1.0)"
+            "color": [255, 255, 255, 1],
+            "width": 2
           },
           "fill": {
-            "color": "rgba(0,0,0,1.0)"
+            "color": [0, 153, 255, 1]
           }
         }
-      ]
-    ],
-    "origo-logo": [
-      [
-        {
-          "label": "Origokommuner",
-          "circle": {
-            "radius": 10,
-            "stroke": {
-              "color": "rgba(0,0,0,1)",
-              "width": 2.5
-            },
-            "fill": {
-              "color": "rgba(255,255,255,0.9)"
-            }
+      }],
+      "LineString": [{
+        "stroke": {
+          "color": [255, 255, 255, 1],
+          "width": 5
+        }
+      },
+      {
+        "stroke": {
+          "color": [0, 153, 255, 1],
+          "width": 3
+        }
+      }],
+      "Polygon": [{
+        "stroke": {
+          "color": [255, 255, 255, 1],
+            "width": 5
           }
         },
         {
-          "circle": {
-            "radius": 2.5,
+          "stroke": {
+            "color": [0, 153, 255, 1],
+            "width": 3
+          }
+        }
+      ]
+    }
+  },
+  "extent": [
+      -2138120,
+      3880750,
+      2396422,
+      8973750
+  ],
+  "center": [
+      150794,
+      6583990
+  ],
+  "home": [
+      105085,
+      6571627,
+      219773,
+      6628182
+  ],
+  "zoom":7,
+  "resolutions": [
+      4200,
+      1399.9999999999998,
+      560,
+      140,
+      55.9999999999999,
+      27.99999999999996,
+      13.999999999999998,
+      6.999999999999999,
+      5.6,
+      3.4999999999999996,
+      2.8,
+      1.4,
+      0.7,
+      0.28,
+      0.14,
+      0.112,
+      0.028
+  ],
+  "source": {
+    "etuna": {
+      "url": "https://karta.eskilstuna.se/geoserver/etuna/wms"
+    },
+		"lantmateriet": {
+      "url": "https://karta.eskilstuna.se/geoserver/lantmateriet/wms"
+    },
+    "ortofoto": {
+      "url": "https://karta.eskilstuna.se/geoserver/ortofoto/wms"
+    },
+    "orto_2021": {
+      "url": "https://geo.eskilstuna.se/imageserver/services/AG_Mosaik/AG_Mosaik_SBF_GIS_Ortofoto2021_Eskilstuna_tatort/ImageServer/WMSServer"
+    },
+		"kommunkartan": {
+      "url": "https://karta.eskilstuna.se/geoserver/kommunkartan/wms"
+    },
+		"bakgrund": {
+			"url": "https://karta.eskilstuna.se/geoserver/Bakgrund/wms"
+		}
+  },
+  "groups": [
+      {
+          "name": "adress",
+          "title": "Adresser och fastigheter",
+          "expanded": false
+      },
+      {
+          "name": "utbildning",
+          "title": "Utbildning och barnomsorg",
+          "expanded": false
+      },
+      {
+          "name": "omsorg",
+          "title": "Omsorg och stöd",
+          "expanded": false
+      },
+      {
+          "name": "uppleva",
+          "title": "Uppleva och göra",
+          "expanded": false,
+          "groups": [
+              {
+                  "name": "friluftsliv",
+                  "title": "Friluftsliv"
+              },
+              {
+                  "name": "slott",
+                  "title": "Slott och herrgårdar"
+              },
+              {
+                  "name": "cykla",
+                  "title": "Cykla"
+              },
+              {
+                  "name": "fritid",
+                  "title": "Fritid och motion"
+              },
+              {
+                  "name": "kultur",
+                  "title": "Kultur"
+              }
+          ]
+      },
+      {
+          "name": "bygga",
+          "title": "Bygga, bo och miljö",
+          "expanded": false,
+          "groups": [
+              {
+                  "name": "pagaende_dp",
+                  "title": "Pågående detaljplaner"
+              }
+          ]
+      },
+      {
+          "name": "trafik",
+          "title": "Trafik och infrastruktur",
+          "expanded": false
+      },
+      {
+          "name": "politik",
+          "title": "Kommun och politik",
+          "expanded": false
+      },
+      {
+          "name": "historiskaorto",
+          "title": "Historiska ortofoton",
+          "expanded": false
+      },
+      {
+          "name": "background",
+          "title": "Bakgrundskartor",
+          "expanded": true
+      }
+    ],
+    "layers": [
+        {
+            "name": "sokvyx_adresser_adresser",
+            "title": "Adresser",
+            "group": "adress",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": "always",
+            "style": "void",
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_utbildning_skolor_forskola",
+            "title": "Förskola",
+            "group": "utbildning",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_utbildning_skolor_grundskola",
+            "title": "Grundskola",
+            "group": "utbildning",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvy_utbildning_skolor_sarskola",
+            "title": "Särskola",
+            "group": "utbildning",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_utbildning_skolor_gymnasium",
+            "title": "Gymnasium",
+            "group": "utbildning",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_fk_by_0484_hogskola",
+            "title": "Högskola",
+            "group": "utbildning",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_vof_eko_vuxen_vard",
+            "title": "Vård och omsorgsboende",
+            "group": "omsorg",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_vof_eko_vuxen_oppnamotesplatser",
+            "title": "Öppna mötesplatser",
+            "group": "omsorg",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_deab_vandrarhem",
+            "title": "Vandrarhem",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_deab_vindskydd",
+            "title": "Vindskydd",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_camping",
+            "title": "Campingplatser",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_kff_aof_centrumfiske",
+            "title": "Centrumfiske",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_friluftsomrade",
+            "title": "Friluftsområden",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_kff_aof_kanotled",
+            "title": "Kanotleder",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_deab_slott",
+            "title": "Slott",
+            "group": "slott",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_deab_herrgard",
+            "title": "Herrgårdar",
+            "group": "slott",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_transport_cykelpumpar",
+            "title": "Cykelpumpar",
+            "group": "cykla",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_transport_cykelparkeringar",
+            "title": "Cykelparkeringar",
+            "group": "cykla",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_badplats",
+            "title": "Badplatser",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_park_utegym",
+            "title": "Utegym",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_kff_aof_idrottsplats",
+            "title": "Idrottsplatser",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_park_park_lekplats",
+            "title": "Lekplatser",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_park_hundlekpark",
+            "title": "Hundlekparker",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		{
+            "name": "sokvyx_intressepunkter_park_pulkabacke",
+            "title": "Pulkabackar",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_kff_ok_bibliotek",
+            "title": "Bibliotek",
+            "group": "kultur",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_kff_ok_museum",
+            "title": "Museum",
+            "group": "kultur",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		        {
+            "name": "sokvyx_kff_konst_offentlig_konst_synlig_ext",
+            "title": "Offentlig konst",
+            "group": "kultur",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_utescen",
+            "title": "Utescener",
+            "group": "kultur",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_kff_aof_teater",
+            "title": "Teater",
+            "group": "kultur",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_park_papperskorgar",
+            "title": "Papperskorgar",
+            "tiled": false,
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_msb_skyddsrum",
+            "title": "Skyddsrum",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_pagaendeprojekt_vagarbeten",
+            "title": "Vägarbeten",
+            "group": "trafik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_valmyndigheten_rostningslokaler_fortidsrostning",
+            "title": "Röstningslokaler förtidsröstning",
+            "group": "politik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_valmyndigheten_vallokaler",
+            "title": "Vallokaler",
+            "group": "politik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+
+
+
+
+        {
+            "name": "sokvyx_primarkartan_mapotherlink_vandringsled",
+            "title": "Vandringsleder",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_gatuunderhall_cykelstrak_prio_vinter",
+            "title": "Cykelstråk med prioriterad väghållning",
+            "group": "cykla",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_transport_cykelvagar",
+            "title": "Cykelvägar",
+            "group": "cykla",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_transport_cykelleder_cykelkarta",
+            "title": "Cykelleder",
+            "group": "cykla",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_intressepunkter_kff_aof_mountainbike",
+            "title": "Mountainbikeled",
+            "group": "cykla",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_kultur_fritid_spar_leder_motion",
+            "title": "Motionsspår",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		{
+            "name": "sokvyx_bm_straket_gp",
+            "title": "BM-stråket - Grönplan",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		{
+            "name": "sokvyx_halsansstig",
+            "title": "Hälsans stig",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		{
+            "name": "sokvyx_ag_op_f_fr_astraket",
+            "title": "Åstråket ÖP2030",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_kultur_fritid_ridstigar_kommun",
+            "title": "Ridleder, kommunala",
+            "group": "fritid",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_gatuunderhall_a_gator",
+            "title": "A-gator",
+            "group": "trafik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		{
+            "name": "sokvyx_sbf_parkering_parkering_ovriga_handikapp",
+            "title": "Parkering handikapp",
+            "group": "trafik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+		    "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		{
+            "name": "sokvyx_sbf_parkering_parkering_ovriga_exkl_handi",
+            "title": "Parkering övriga",
+            "group": "trafik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+		    "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_transport_gatuparkering",
+            "title": "Parkering längs gata",
+            "group": "trafik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+
+
+
+
+
+
+
+		    {
+            "name": "sokvyx_sbf_gis_stadsdel_etuna_ytor",
+            "title": "Stadsdelar Eskilstuna",
+            "group": "adress",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": "always",
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_fk_ay_esktn",
+            "title": "Fastighetsytor",
+            "group": "adress",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_buf_led_upptagomr_skolor_f_3",
+            "title": "Upptagningsområden skolor F-3",
+            "group": "utbildning",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_buf_led_upptagomr_skolor_4_6",
+            "title": "Upptagningsområden skolor 4-6",
+            "group": "utbildning",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_buf_led_upptagomr_skolor_7_9",
+            "title": "Upptagningsområden skolor 7-9",
+            "group": "utbildning",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_vof_eko_hemvardsomraden",
+            "title": "Hemtjänstområden",
+            "group": "omsorg",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_bistand_hemtjanst",
+            "title": "Biståndskontoret per hemtjänstområde",
+            "group": "omsorg",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_bistand_avgift",
+            "title": "Biståndskontoret avgiftshandläggare",
+            "group": "omsorg",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_bistand_bab",
+            "title": "Biståndskontoret bostadsanpassningsbidrag",
+            "group": "omsorg",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_bistand_socpsyk",
+            "title": "Biståndskontoret socialpsykiatri",
+            "group": "omsorg",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_bistand_lss",
+            "title": "Biståndskontoret LSS",
+            "group": "omsorg",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		{
+            "name": "sokvyx_parker_gp",
+            "title": "Parker - Grönplan",
+            "group": "fritid",
+            "queryable": true,
+			"opacity": 0.5,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_naturvardsverket_nat_res_riket",
+            "title": "Naturreservat",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_naturvardsverket_nvo_naturreservat",
+            "title": "Skyddade områden, naturreservat",
+            "group": "friluftsliv",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_pagaendeprojekt_anlaggningsprojekt_2019",
+            "title": "Anläggningsprojekt 2019",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_pagaendeprojekt_anlaggningsprojekt_2020",
+            "title": "Anläggningsprojekt 2020",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_ag_dp_pagaende_detaljplaner_planprocess",
+            "title": "Pågående detaljplaner, planprocess",
+            "group": "pagaende_dp",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_ag_dp_pagaende_planprogram_planprocess",
+            "title": "Pågående planprogram, planprocess",
+            "group": "pagaende_dp",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "etuna:GallandeDetaljplaner_linje",
+            "title": "Gällande detaljplaner",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html",
+            "grouplayer": true,
+            "sublayers" : [
+                {
+                    "name" : "sokvyx_detaljplan_planomryta_20_linje",
+                    "style" : "etunax_PLANOMRYTA_20_linje",
+                    "rule"  : "print_gallandedetaljplanerlinje",
+                    "title" : "Detaljplan linje"
+                },
+                {
+                    "name" : "sokvyx_detaljplan_planomryta_20",
+                    "style" : "etunax_yta_gra_dp",
+                    "rule"  : "print_gallandedetaljplaner",
+                    "title" : "Detaljplan yta"
+                }
+            ]
+        },
+        {
+            "name": "sokvyx_detaljplan_planomryta_20_omradesbest",
+            "title": "Områdesbestämmelser",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_ag_dp_pagaende_dp_program_godkanda",
+            "title": "Godkända planprogram",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_natur_miljo_saneringomr_avlopp",
+            "title": "Saneringsområden enskilda avlopp",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_verksamhetsomraden_sotningsdistrikt",
+            "title": "Sotningsdistrikt",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_raddningstjanst_mor_insatszoner",
+            "title": "Räddningstjänstens insatszoner (teoretiska)",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_markagande_kommunagdmark_eskilstuna",
+            "title": "Kommunägd mark",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		    {
+            "name": "sokvyx_transport_p_platser",
+            "title": "Parkeringsplatser",
+            "group": "trafik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "sokvyx_valmyndigheten_valdistrikt",
+            "title": "Valdistrikt",
+            "group": "politik",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+		{
+            "name": "sokvyx_gron_infrastruktur_gp",
+            "title": "Grön infrastruktur - Grönplan",
+            "group": "bygga",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+			      "searchable": true,
+            "source": "etuna",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2018_kommun_tiled",
+            "title": "Ortofoto kommun, 2018",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "orto_tatort2018",
+            "title": "Ortofoto tätort, 2018",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "style": "historto_stil",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2016_kommun",
+            "title": "Ortofoto kommun, 2016",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2016_tatort",
+            "title": "Ortofoto tätort, 2016",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "style": "historto_stil",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto216_pan",
+            "title": "Svartvitt ortofoto tätort, 2016",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2014_kommun",
+            "title": "Ortofoto kommun, 2014",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2014_tatort",
+            "title": "Ortofoto tätort, 2014",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2012",
+            "title": "Ortofoto kommun, 2012",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2011",
+            "title": "Ortofoto tätort, 2011",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2010",
+            "title": "Ortofoto kommun, 2010",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2010ir",
+            "title": "IR-ortofoto kommun, 2010",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "ortofoto2009",
+            "title": "Ortofoto tätort, 2009",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "orto_2004_kommun",
+            "title": "Ortofoto kommun, 2004",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "orto_kommun_97_98",
+            "title": "Ortofoto kommun, 1997/1998",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "OI_Histortho_75",
+            "title": "Historiska ortofoton, 1975",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "style": "historto_stil",
+            "infoFormat": "text/html"
+        },
+        {
+            "name": "OI.Histortho_60",
+            "title": "Historiska ortofoton, 1960",
+            "group": "historiskaorto",
+            "queryable": true,
+            "type": "WMS",
+            "visible": false,
+            "searchable": true,
+            "source": "ortofoto",
+            "style": "historto_stil",
+            "infoFormat": "text/html"
+        },
+        {
+            "attribution": "&copy Eskilstuna kommun, &copy Lantmäteriet MS2006/1416",
+            "format": "image/png",
+            "group": "background",
+            "name": "bke_bakgrundskarta_enkel_med_text",
+            "source": "bakgrund",
+            "queryable": false,
+            "title": "Bakgrundskarta (nedtonad, med text)",
+            "type": "WMS",
+            "style": "karta_gra_text",
+            "visible": true
+        },
+        {
+            "attribution": "&copy Eskilstuna kommun, &copy Lantmäteriet MS2006/1416",
+            "format": "image/png",
+            "group": "background",
+            "name": "bke_bakgrundskarta_enkel",
+            "source": "bakgrund",
+            "queryable": false,
+            "title": "Bakgrundskarta (nedtonad)",
+            "type": "WMS",
+            "style": "karta_gra",
+            "visible": false
+        },
+        {
+            "attribution": "&copy Eskilstuna kommun, &copy Lantmäteriet MS2006/1416",
+            "format": "image/png",
+            "group": "background",
+            "name": "bkf_bakgrundskarta_farg_med_text",
+            "source": "bakgrund",
+            "queryable": false,
+            "title": "Bakgrundskarta (färg, med text)",
+            "type": "WMS",
+            "style": "karta_farg_text",
+            "visible": false
+        },
+        {
+            "attribution": "&copy Eskilstuna kommun, &copy Lantmäteriet MS2006/1416",
+            "format": "image/png",
+            "group": "background",
+            "name": "bkf_bakgrundskarta_farg",
+            "source": "bakgrund",
+            "queryable": false,
+            "title": "Bakgrundskarta (färg)",
+            "type": "WMS",
+            "style": "karta_farg",
+            "visible": false
+        },
+        {
+            "attribution": "&copy Eskilstuna kommun, &copy Lantmäteriet MS2006/1416",
+            "format": "image/png",
+            "group": "background",
+            "name": "Ortofoto_0.16",
+            "source": "ortofoto",
+            "queryable": false,
+            "title": "Ortowebb 0,16 m",
+            "type": "WMS",
+            "style": "orto_LM",
+            "visible": false
+        },
+        {
+            "attribution": "&copy Eskilstuna kommun",
+            "format": "image/png",
+            "name": "0",
+            "title": "Ortofoto tätort, 2021",
+            "group": "background",
+            "queryable": false,
+            "type": "WMS",
+            "visible": false,
+            "style": "orto21",
+            "searchable": false,
+            "source": "orto_2021",
+            "ArcGIS": true
+        }
+    ],
+    "styles": {
+      "mask": [
+        [
+          {
             "stroke": {
-              "color": "rgba(0,0,0,0)",
-              "width": 1
+              "color": "rgba(0,0,0,1.0)"
             },
             "fill": {
-              "color": "rgba(37,129,196,1)"
+              "color": "rgba(0,0,0,1.0)"
             }
           }
-        }
-      ]
-    ],
-    "cirkel": [
-      [
-        {
-          "circle": {
-            "radius": 6,
-            "stroke": {
-              "color": "rgba(0,0,0,1)",
-              "width": 2
-            },
-            "fill": {
-              "color": "rgba(0,0,0,0.5)"
+        ]
+      ],
+      "origo-logo": [
+        [
+          {
+            "label": "Origokommuner",
+            "circle": {
+              "radius": 10,
+              "stroke": {
+                "color": "rgba(0,0,0,1)",
+                "width": 2.5
+              },
+              "fill": {
+                "color": "rgba(255,255,255,0.9)"
+              }
+            }
+          },
+          {
+            "circle": {
+              "radius": 2.5,
+              "stroke": {
+                "color": "rgba(0,0,0,0)",
+                "width": 1
+              },
+              "fill": {
+                "color": "rgba(37,129,196,1)"
+              }
             }
           }
-        }
-      ]
-    ],
-    "karta_osm": [
-      [
-        {
-          "image": {
-            "src": "img/png/osm.png"
+        ]
+      ],
+      "cirkel": [
+        [
+          {
+            "circle": {
+              "radius": 6,
+              "stroke": {
+                "color": "rgba(0,0,0,1)",
+                "width": 2
+              },
+              "fill": {
+                "color": "rgba(0,0,0,0.5)"
+              }
+            }
           }
-        }
-      ]
-    ],
-    "karta_gra": [
-      [
-        {
-          "image": {
-            "src": "img/png/gra.png"
+        ]
+      ],
+      "karta_osm": [
+        [
+          {
+            "image": {
+              "src": "img/png/osm.png"
+            }
           }
-        }
-      ]
-    ],
-    "karta_farg": [
-      [
-        {
-          "image": {
-            "src": "img/png/farg.png"
+        ]
+      ],
+      "karta_gra": [
+          [
+            {
+              "image": {
+                "src": "img/png/Kartknapp_nedtonad.png"
+              }
+            }
+          ]
+      ],
+      "karta_gra_text": [
+        [
+          {
+            "image": {
+              "src": "img/png/Kartknapp_nedtonad_text.png"
+            }
           }
-        }
-      ]
-    ],
-    "orto": [
-      [
-        {
-          "image": {
-            "src": "img/png/orto.png"
+        ]
+      ],
+      "karta_farg": [
+        [
+          {
+            "image": {
+              "src": "img/png/Kartknapp_farg.png"
+            }
           }
-        }
+        ]
+      ],
+      "karta_farg_text": [
+        [
+          {
+            "image": {
+              "src": "img/png/Kartknapp_farg_text.png"
+            }
+          }
+        ]
+      ],
+      "topofärg": [
+          [
+            {
+              "image": {
+                "src": "img/png/Kartknapp_topo.png"
+              }
+            }
+          ]
+      ],
+      "void": [
+            [
+                {
+                    "icon": {
+                        "size": [
+                            20,
+                            20
+                        ],
+                        "src": "img/png/void.png"
+                    }
+                }
+            ]
+      ],
+      "orto21": [
+        [
+          {
+            "image": {
+              "src": "img/png/orto_21.png"
+            }
+          }
+        ]
+      ],
+      "orto18": [
+        [
+          {
+            "image": {
+              "src": "img/png/orto_18.png"
+            }
+          }
+        ]
+      ],
+      "orto16": [
+        [
+          {
+            "image": {
+              "src": "img/png/orto_16.png"
+            }
+          }
+        ]
+      ],
+      "orto_LM": [
+        [
+          {
+            "image": {
+              "src": "img/png/orto_LM.png"
+            }
+          }
+        ]
       ]
-    ]
-  }
+    }
 }
