@@ -211,8 +211,16 @@
       "url": "https://karta.eskilstuna.se/geoserver/kommunkartan/wms"
     },
 		"bakgrund": {
-			"url": "https://karta.eskilstuna.se/geoserver/Bakgrund/wms"
-		}
+			"url": "https://karta.eskilstuna.se/geoserver/Bakgrund/wms",
+      "type": "Geoserver"
+		},
+    "LST": {
+      "url": "https://ext-geodata.lansstyrelsen.se/arcgis/rest/services/VISS/VM_Havsmiljo/MapServer"
+    },
+    "fastighetsuppgifter": {
+      "url": "https://ows.rattvik.se/gis/fastighetsuppgifter?&WITH_GEOMETRY=true&FI_POINT_TOLERANCE=15",
+      "type": "QGIS"
+    }
   },
   "groups": [
       {
@@ -290,6 +298,54 @@
       }
     ],
     "layers": [
+        {
+          "name": "skolor",
+          "title": "Grundskolor",
+          "group": "root",
+          "queryable": true,
+          "source": "fastighetsuppgifter",
+          "style": "skolor",
+          "type": "WMS",
+          "visible": false,
+          "attributes": [
+            {
+              "title": "Namn: ",
+              "name": "namn"
+            },
+            {
+              "title": "Verksamhet: ",
+              "name": "verksamhet"
+            },
+            {
+              "html": "<br><a target='_blank' href='{{url}}'>Mer info hittar du här</a>"
+            }
+          ]
+        },
+        {
+          "name": "4",
+          "title": "Utsjövatten",
+          "id": "4",
+          "queryable": true,
+          "type": "AGS_TILE",
+          "group": "root",
+          "source": "LST",
+          "style": "mask",
+          "renderMode": "image"
+        },
+        {
+          "name": "origo-cities",
+          "title": "Origokommuner",
+          "group": "root",
+          "source": "data/origo-cities-3857.geojson",
+          "style": "origo-logo",
+          "type": "GEOJSON",
+          "attributes": [
+            {
+              "name": "name"
+            }
+          ],
+          "visible": true
+        },
         {
             "name": "sokvyx_adresser_adresser",
             "title": "Adresser",
@@ -1411,6 +1467,17 @@
         }
     ],
     "styles": {
+      "skolor": [
+        [
+          {
+            "icon": 
+            {
+              "size": [32,32],
+              "src": "img/png/grundskola.png"
+            }
+          }
+        ]
+      ],
       "mask": [
         [
           {
