@@ -87,6 +87,12 @@ export default function PrintMap(options = {}) {
       map.addControl(scaleLine);
       map.addControl(attribution);
     },
+    getNorthArrowComponent() {
+      return northArrowComponent;
+    },
+    getLogoComponent() {
+      return logoComponent;
+    },
     removePrintControls() { mapControls.forEach((mapControl) => map.removeControl(mapControl)); },
     render() {
       return `
