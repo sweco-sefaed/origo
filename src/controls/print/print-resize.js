@@ -391,9 +391,7 @@ export default function PrintResize(options = {}) {
               text.setScale(textScale);
             }
           });
-          source.getFeatures().forEach(feature => {
-            feature.setStyle(newStyle);
-          });
+          layer.setStyle(newStyle);
         }
       }
     }
@@ -417,32 +415,26 @@ export default function PrintResize(options = {}) {
     const source = layer.getSource();
 
     if (isVector(layer)) {
-      const features = source.getFeatures();
-      if (features && features.length) {
-        const feature = features[0];
+      const styles = layer.getStyle();
+      const scale = 1;
+      if (Array.isArray(styles)) {
+        styles.forEach(style => {
+          const image = style.getImage();
+          if (image) {
+            image.setScale(scale);
+          }
 
-        // Remove styles instead?
-        const styles = feature.getStyle();
-        const scale = 1;
-        if (Array.isArray(styles)) {
-          styles.forEach(style => {
-            const image = style.getImage();
-            if (image) {
-              image.setScale(scale);
-            }
+          const stroke = style.getStroke();
+          if (stroke) {
+            const strokeWidth = stroke.getWidth();
+            stroke.setWidth(strokeWidth * (150 / resolution));
+          }
 
-            const stroke = style.getStroke();
-            if (stroke) {
-              const strokeWidth = stroke.getWidth();
-              stroke.setWidth(strokeWidth * (150 / resolution));
-            }
-
-            const text = style.getText();
-            if (text) {
-              text.setScale(scale);
-            }
-          });
-        }
+          const text = style.getText();
+          if (text) {
+            text.setScale(scale);
+          }
+        });
       }
     }
 
